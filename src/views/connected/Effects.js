@@ -7,24 +7,36 @@ export default () => {
   return (
     <ScrollView
       style={styles.view}
-      contentContainerStyle={{alignItems: 'center'}}>
-      <View style={styles.row}>
+      contentContainerStyle={{
+        paddingVertical: 10,
+      }}>
+      <View
+        style={{
+          justifyContent: 'center',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+        }}>
+        <EffectCard title="Strobe" command="S" description="Pisca pisca" />
         <EffectCard
-          title="Strobe"
-          onPress={() => {
-            console.warn('Strobe');
-          }}
-          description="Pisca pisca"
+          title="Smooth"
+          command="s"
+          description="Troca as cores de forma suave"
         />
-        <EffectCard />
-      </View>
-      <View style={styles.row}>
-        <EffectCard />
-        <EffectCard />
-      </View>
-      <View style={styles.row}>
-        <EffectCard />
-        <EffectCard />
+        <EffectCard
+          title="Flash"
+          command="F"
+          description="Pisca rapidamente a última cor selecionada"
+        />
+        <EffectCard
+          title="Fade monocolor"
+          command="f"
+          description="Pisca lentamente a última cor selecionada"
+        />
+        <EffectCard
+          title="Fade"
+          command="e"
+          description="Pisca lentamente algumas cores"
+        />
       </View>
       <View style={styles.speed}>
         <View style={{width: 35}}>
@@ -41,12 +53,9 @@ export default () => {
 };
 
 const styles = StyleSheet.create({
-  view: {flex: 1, backgroundColor: '#2d2d2d'},
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    width: '100%',
-    marginTop: 25,
+  view: {
+    flex: 1,
+    backgroundColor: '#2d2d2d',
   },
   speed: {
     marginTop: 50,
@@ -54,5 +63,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     width: 140,
+    alignSelf: 'center',
   },
 });

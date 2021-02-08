@@ -1,48 +1,33 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Text, Dimensions, Button} from 'react-native';
-
+import {View, StyleSheet, Text, Button} from 'react-native';
 import {ColorWheel} from '../../components/ColorWheel';
 import colorsys from 'colorsys';
 import AddFavoriteButton from '../../components/AddFavoriteButton';
-
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ScrollView} from 'react-native-gesture-handler';
 
+import FavColorsContext from '../../context/FavColorsContext';
+import BrightnessControl from '../../components/BrightnessControl';
+
 export default () => {
-  const [color, setColor] = useState('#5fDD9d');
+  const [currentColor, setColor] = useState({r: 0, g: 255, b: 75});
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.view}>
         <View style={styles.colorWheel}>
           <ColorWheel
-            initialColor={'#5fDD9D'}
+            initialColor={'#00ff75'}
             onColorChange={(color) => {
               const rgb = colorsys.hsv2Rgb(color.h, color.s, color.v);
-
-              console.log({rgb});
+              setColor(rgb);
             }}
             style={{width: 230, height: 230}}
           />
         </View>
         <View>
-          <AddFavoriteButton
-            onPress={() => {
-              console.warn('kkk');
-            }}>
-            <Icon name="star" size={24} color={'#2d2d2d'} />
-          </AddFavoriteButton>
+          <AddFavoriteButton color={currentColor}></AddFavoriteButton>
         </View>
-        <View style={styles.brightness}>
-          <View style={{width: 35}}>
-            <Button title="-" color="#A42CD6" />
-          </View>
-
-          <Text style={{color: '#fbf5f3'}}>Brilho</Text>
-          <View style={{width: 35}}>
-            <Button title="+" color="#A42CD6" />
-          </View>
-        </View>
+        <BrightnessControl />
       </View>
     </ScrollView>
   );
@@ -62,16 +47,10 @@ const styles = StyleSheet.create({
     height: 380,
   },
   colorWheel: {
-    width: 235,
-    height: 235,
+    width: 242,
+    height: 242,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  brightness: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    width: 140,
   },
 });
