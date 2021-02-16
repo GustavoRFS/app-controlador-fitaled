@@ -1,15 +1,17 @@
 import React from 'react';
 import {ScrollView, View, StyleSheet, Button, Text} from 'react-native';
-
 import EffectCard from '../../components/EffectCard';
+
+import PowerButton from '../../components/PowerButton';
 
 export default () => {
   return (
     <ScrollView
       style={styles.view}
       contentContainerStyle={{
-        paddingVertical: 10,
+        paddingVertical: 20,
       }}>
+      <PowerButton />
       <View
         style={{
           justifyContent: 'center',

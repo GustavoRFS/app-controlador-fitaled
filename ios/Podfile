@@ -10,6 +10,8 @@ target 'controladorfitaled' do
 
   pod 'react-native-ble-manager', :path => '../node_modules/react-native-ble-manager'
 
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
+
   target 'controladorfitaledTests' do
     inherit! :complete
     # Pods for testing

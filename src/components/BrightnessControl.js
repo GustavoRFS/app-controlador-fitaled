@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 
-export default () => {
+export default (props) => {
   return (
     <View style={styles.brightness}>
       <View style={{width: 35}}>
@@ -10,7 +10,7 @@ export default () => {
 
       <Text style={{color: '#fbf5f3'}}>Brilho</Text>
       <View style={{width: 35}}>
-        <Button title="+" color="#A42CD6" />
+        <Button title="+" color="#A42CD6" onPress={props.onPress} />
       </View>
     </View>
   );

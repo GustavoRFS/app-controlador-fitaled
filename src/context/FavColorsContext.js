@@ -1,4 +1,5 @@
 import React, {useState, createContext, useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const FavColorsContext = createContext({
   favoriteColors: [],
@@ -9,27 +10,39 @@ const FavColorsContext = createContext({
 export default FavColorsContext;
 
 export const FavColorsProvider = ({children}) => {
+  const AsyncSave = async (newColors) => {
+    await AsyncStorage.setItem('favorite_colors', JSON.stringify(newColors));
+  };
+
   const [favoriteColors, setFavoriteColors] = useState([]);
 
   const addColor = (color) => {
-    setFavoriteColors([...favoriteColors, color]);
-
-    //AsyncSave;
+    //Clones the favoriteColors array without becoming the same state
+    const colorsArray = [...favoriteColors, color];
+    setFavoriteColors(colorsArray);
+    AsyncSave(colorsArray);
   };
 
   const removeColor = (color) => {
     const index = favoriteColors.indexOf(color);
     if (index >= 0 && index < favoriteColors.length) {
       const colorsArray = [...favoriteColors];
+
       colorsArray.splice(index, 1);
       setFavoriteColors(colorsArray);
 
-      //AsyncSave;
+      AsyncSave(colorsArray);
     }
   };
 
   useEffect(() => {
-    //AsyncStorage loading
+    AsyncStorage.getItem('favorite_colors')
+      .then((value) => {
+        setFavoriteColors(JSON.parse(value));
+      })
+      .catch((err) => {
+        setFavoriteColors([]);
+      });
   }, []);
 
   return (
