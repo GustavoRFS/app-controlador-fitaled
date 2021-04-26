@@ -24,10 +24,10 @@ export default () => {
               initialColor={'#00ff75'}
               onColorChange={(color) => {
                 const rgb = colorsys.hsv2Rgb(color.h, color.s, color.v);
-                sendData(`C ${rgb.r} ${rgb.g} ${rgb.b}\n`);
+                sendData(`C ${rgb.r} ${rgb.g} ${rgb.b}`);
                 setColor(rgb);
               }}
-              style={{width: 230, height: 230}}
+              thumbSize={50}
             />
           </View>
           <View>

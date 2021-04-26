@@ -11,12 +11,7 @@ export default FavColorsContext;
 
 export const FavColorsProvider = ({children}) => {
   const AsyncSave = async (newColors) => {
-    await AsyncStorage.setItem(
-      'favorite_colors',
-      JSON.stringify(newColors),
-    ).catch((err) => {
-      console.error(err);
-    });
+    await AsyncStorage.setItem('favorite_colors', JSON.stringify(newColors));
   };
 
   const [favoriteColors, setFavoriteColors] = useState([]);
@@ -41,14 +36,11 @@ export const FavColorsProvider = ({children}) => {
   };
 
   useEffect(() => {
-    console.log('ue 1');
     AsyncStorage.getItem('favorite_colors')
       .then((value) => {
-        console.log(value);
         setFavoriteColors(value === null ? [] : JSON.parse(value));
       })
       .catch((err) => {
-        console.error(err);
         setFavoriteColors([]);
       });
   }, []);

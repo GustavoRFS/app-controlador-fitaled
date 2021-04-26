@@ -22,7 +22,6 @@ export const BTContextProvider = ({children}) => {
         setConnectionState(true);
       })
       .catch((err) => {
-        console.error(err);
         attemptToConnect(device);
       });
   };
