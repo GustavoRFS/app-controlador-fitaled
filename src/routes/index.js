@@ -1,16 +1,16 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React, {useState, useContext} from 'react';
-import BleContext from '../context/bleContext';
+import React, {useContext} from 'react';
+import BTContext from '../context/BTContext';
 
 import TabNavigation from './TabNavigation';
-import ConnectionView from '../views/ConnectionView';
+import SplashScreen from '../views/SplashScreen';
 
 export default () => {
-  const {isConnected} = useContext(BleContext);
+  const {isConnected} = useContext(BTContext);
 
   return (
     <NavigationContainer>
-      {isConnected ? <TabNavigation /> : <ConnectionView />}
+      {isConnected ? <TabNavigation /> : <SplashScreen />}
     </NavigationContainer>
   );
 };

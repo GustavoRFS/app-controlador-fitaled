@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, StyleSheet, Text, Button} from 'react-native';
 import {ColorWheel} from '../../components/ColorWheel';
 import colorsys from 'colorsys';
@@ -6,10 +6,13 @@ import AddFavoriteButton from '../../components/AddFavoriteButton';
 import {ScrollView} from 'react-native-gesture-handler';
 import BrightnessControl from '../../components/BrightnessControl';
 
+import BTContext from '../../context/BTContext';
+
 import PowerButton from '../../components/PowerButton';
 
 export default () => {
   const [currentColor, setColor] = useState({r: 0, g: 255, b: 75});
+  const {sendData} = useContext(BTContext);
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -21,6 +24,7 @@ export default () => {
               initialColor={'#00ff75'}
               onColorChange={(color) => {
                 const rgb = colorsys.hsv2Rgb(color.h, color.s, color.v);
+                sendData(`C ${rgb.r} ${rgb.g} ${rgb.b}\n`);
                 setColor(rgb);
               }}
               style={{width: 230, height: 230}}

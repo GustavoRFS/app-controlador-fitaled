@@ -18,7 +18,7 @@
     "colorsys": "^1.0.22",
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-ble-manager": "^7.4.2",
+    "react-native-bluetooth-serial": "^1.0.0-rc1",
     "react-native-gesture-handler": "^1.9.0",
     "react-native-paper": "^4.7.1",
     "react-native-reanimated": "^1.13.2",

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, StyleSheet, Text, TouchableNativeFeedback} from 'react-native';
+import BTContext from '../context/BTContext';
 
 export default (props) => {
+  const {sendData} = useContext(BTContext);
   return (
-    <TouchableNativeFeedback onPress={props.onPress}>
+    <TouchableNativeFeedback
+      onPress={() => {
+        sendData(props.command);
+      }}>
       <View style={styles.card}>
         <Text style={styles.title}>{props.title}</Text>
         <Text style={styles.description}>{props.description}</Text>

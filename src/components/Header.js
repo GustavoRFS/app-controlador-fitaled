@@ -1,34 +1,29 @@
 import React, {useState} from 'react';
-import {Dimensions, View, Text} from 'react-native';
+import {Dimensions, View, Image} from 'react-native';
 
 export default () => {
-  const [headerWidth, setHeaderWidth] = useState(
+  /*const [headerWidth, setHeaderWidth] = useState(
     Dimensions.get('window').width,
   );
 
   Dimensions.addEventListener('change', () => {
     setHeaderWidth(Dimensions.get('window').width);
   });
-
+*/
   return (
     <View
       style={{
-        width: headerWidth,
-        height: 45,
+        width: '100%',
+        height: 55,
         backgroundColor: '#A42CD6',
-        borderBottomRightRadius: 8,
-        borderBottomLeftRadius: 8,
         justifyContent: 'center',
+        alignItems: 'center',
       }}>
-      <Text
-        style={{
-          fontSize: 18,
-          color: '#fbf5f3',
-          textAlign: 'center',
-          textAlignVertical: 'center',
-        }}>
-        Led Controller
-      </Text>
+      <Image
+        source={require('../assets/icon300x.png')}
+        resizeMode="contain"
+        style={{width: 40}}
+      />
     </View>
   );
 };

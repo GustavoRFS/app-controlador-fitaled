@@ -14,11 +14,11 @@ export default (props) => {
 
   const refreshButtonColor = () => {
     var found = false;
-    favoriteColors.forEach((favoriteColor) => {
+    favoriteColors?.forEach((favoriteColor) => {
       if (
-        Math.abs(favoriteColor.r - props.color.r) < 10 &&
-        Math.abs(favoriteColor.g - props.color.g) < 10 &&
-        Math.abs(favoriteColor.b - props.color.b) < 10
+        Math.abs(favoriteColor.r - props.color.r) < 5 &&
+        Math.abs(favoriteColor.g - props.color.g) < 5 &&
+        Math.abs(favoriteColor.b - props.color.b) < 5
       ) {
         found = true;
         setDisable(true);

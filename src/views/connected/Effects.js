@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {ScrollView, View, StyleSheet, Button, Text} from 'react-native';
 import EffectCard from '../../components/EffectCard';
 
 import PowerButton from '../../components/PowerButton';
+import BTContext from '../../context/BTContext';
+
+import BrightnessControl from '../../components/BrightnessControl';
 
 export default () => {
+  const {sendData} = useContext(BTContext);
   return (
     <ScrollView
       style={styles.view}
@@ -42,14 +46,27 @@ export default () => {
       </View>
       <View style={styles.speed}>
         <View style={{width: 35}}>
-          <Button title="-" color="#A42CD6" />
+          <Button
+            title="-"
+            color="#A42CD6"
+            onPress={() => {
+              sendData('v');
+            }}
+          />
         </View>
 
         <Text style={{color: '#fbf5f3', marginHorizontal: 20}}>Velocidade</Text>
         <View style={{width: 35}}>
-          <Button title="+" color="#A42CD6" />
+          <Button
+            title="+"
+            color="#A42CD6"
+            onPress={() => {
+              sendData('V');
+            }}
+          />
         </View>
       </View>
+      <BrightnessControl />
     </ScrollView>
   );
 };

@@ -5,22 +5,20 @@
   other: #5fDD9d #FB3640
 */
 
-import React from 'react';
 import 'react-native-gesture-handler';
+import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
-import {BleContextProvider} from './src/context/bleContext';
+import {BTContextProvider} from './src/context/BTContext';
 import Routes from './src/routes/index';
-import Header from './src/components/Header';
 
 const App = () => {
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#A42CD6" />
       <SafeAreaView style={styles.backgroundView}>
-        <Header />
-        <BleContextProvider>
+        <BTContextProvider>
           <Routes />
-        </BleContextProvider>
+        </BTContextProvider>
       </SafeAreaView>
     </>
   );

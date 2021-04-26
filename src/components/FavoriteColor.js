@@ -1,34 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, StyleSheet, TouchableNativeFeedback} from 'react-native';
 
+import BTContext from '../context/BTContext';
+
 export default (props) => {
+  const {sendData} = useContext(BTContext);
   return (
     <View>
       <TouchableNativeFeedback
         disabled={props.disabled}
-        onLongPress={() => props.onLongPress()}>
+        onLongPress={() => props.onLongPress()}
+        onPress={() => {
+          for (var i = 0; i < 5; i++) {
+            sendData(`C ${props.color.r} ${props.color.g} ${props.color.b}`);
+          }
+        }}>
         <View
           style={{
             ...styles.container,
             backgroundColor: `rgb(${props.color.r},${props.color.g},${props.color.b})`,
             flexDirection: 'row-reverse',
-          }}>
-          <View style={{display: 'none', opacity: 0}}>
-            <TouchableNativeFeedback>
-              <View
-                style={{
-                  backgroundColor: '#2d2d2d',
-                  borderColor: '#fafafa',
-                  borderWidth: 1,
-                  borderRadius: 10,
-                  width: 16,
-                  height: 16,
-                  translateY: -4,
-                  translateX: 4,
-                }}></View>
-            </TouchableNativeFeedback>
-          </View>
-        </View>
+          }}></View>
       </TouchableNativeFeedback>
     </View>
   );

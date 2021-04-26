@@ -5,12 +5,14 @@ import Effects from '../views/connected/Effects';
 import Favorites from '../views/connected/Favorites';
 import {FavColorsProvider} from '../context/FavColorsContext';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Header from '../components/Header';
 
 const Tab = createMaterialBottomTabNavigator();
 
 export default () => {
   return (
     <FavColorsProvider>
+      <Header />
       <Tab.Navigator
         initialRouteName="ColorSelector"
         style={{backgroundColor: '#2d2d2d'}}
