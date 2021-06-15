@@ -1,3 +1,5 @@
 # app-controlador-fitaled
 
-Esse app serve para conectar e enviar comandos para o [arduino que controla uma fita de LED](https://github.com/GustavoRFS/controlador-fitaled-arduino)
+![App Preview](/AppPreview.gif)
+
+O Aplicativo controla uma fita de LED ligada em um Arduino, através da comunicação serial via Bluetooth ([Repositório com o código do Arduino](https://github.com/GustavoRFS/controlador-fitaled-arduino.git)).
